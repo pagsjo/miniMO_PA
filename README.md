@@ -29,8 +29,11 @@ The following programs requires **disabling** **millis()/micros()**:
 
 ## Edited modules:
 ### DCO
-Edited to have a more usable frequency range (C0-C7, derived from the Arturia Minibrute 2's MIDI range)
+Edited to be more playable from external CV.
+* **Range 1**: C1-C3 (~33Hz-131Hz)
+* **Range 2**: C3-C5 (~131Hz-523Hz)
+* **Range 3**: C5-C7 (~523Hz-2093Hz)
 
-Currently all three ranges are the same.
+This means you should calibrate the module with a two-octave span, and switch octaves using the module, not the external CV.
 
 Requires **disabling** **millis()/micros()**.

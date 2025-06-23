@@ -2,6 +2,8 @@
 //********************
 //*    miniMO DCO    *
 //* 2016 by enveloop *
+//*   updated 2025   *
+//*    by pagsjo     *
 //********************
 //
    http://www.minimosynth.com/

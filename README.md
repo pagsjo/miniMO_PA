@@ -17,6 +17,9 @@ Compiles using Arduino IDE 2.3.6 and [ATTinyCore by Spence Konde](https://github
 * **Timer 1 Clock:** CPU (CPU frequency)
 
 ## Known Issues
+### DCO
+Does not track pitch CV correctly. Lowest and highest CV generate correct pitches, scaling inbetween is not correct.
+
 ### millis()/micros()
 The following programs requires **disabling** **millis()/micros()**:
 * Algorithmic Generator

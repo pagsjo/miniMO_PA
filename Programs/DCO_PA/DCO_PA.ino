@@ -397,16 +397,16 @@ int readExtInput(const byte pin) {  //with averaging
 void getMappedFreq(int range) {
   switch (range) {
     case 0:
-      freqRangeMin = 33;  //C1
-      freqRangeMax = 2093;  //C3
+      freqRangeMin = 69;  //C1
+      freqRangeMax = 278;  //C3
       break;
     case 1:
-      freqRangeMin = 69;  //C3
-      freqRangeMax = 4700; //C5
+      freqRangeMin = 278;  //C3
+      freqRangeMax = 1112; //C5
       break;
     case 2:
-      freqRangeMin = 33;  //C5
-      freqRangeMax = 2093; //C7
+      freqRangeMin = 1112;  //C5
+      freqRangeMax = 4448; //C7
       break;
   }
 }

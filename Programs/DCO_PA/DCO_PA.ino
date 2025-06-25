@@ -321,7 +321,10 @@ void setFrequency(int pin) {
     int tempRead = analogRead(pin);
     byte freqRead = tempRead >> 2;
     potPosFreqRef = freqRead;
-    frequency = map(tempRead, sensorMin, sensorMax, freqRangeMin, freqRangeMax); //map the calibrated values (by default 0-1023) to the frequency range we want
+    //frequency = map(tempRead, sensorMin, sensorMax, freqRangeMin, freqRangeMax); //map the calibrated values (by default 0-1023) to the frequency range we want
+    float halfStep = 1.0595;
+    float cvIn = analogRead(pin) * (24.0 / (sensorMax - sensorMin));
+    frequency = freqRangeMin * pow(halfStep, cvIn);
   }
 }
 

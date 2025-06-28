@@ -18,8 +18,6 @@ Compiles using Arduino IDE 2.3.6 and [ATTinyCore by Spence Konde](https://github
 * **Timer 1 Clock:** CPU (CPU frequency)
 
 ## Known Issues
-### DCO and external CV
-Pitch behaves strangely when using external CV.
 
 ### millis()/micros()
 The following programs requires _**disabling**_ **millis()/micros()**:
@@ -38,6 +36,6 @@ Edited to be more playable from external CV.
 * **Range 2**: C3-C5 (~131Hz-523Hz)
 * **Range 3**: C5-C7 (~523Hz-2093Hz)
 
-See [Known Issues](#dco-and-external-cv)
+Calibrate with a two-octave span using V/oct.
 
 Requires _**disabling**_ **millis()/micros()**.

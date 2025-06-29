@@ -323,7 +323,8 @@ void setFrequency(int pin) {
     potPosFreqRef = freqRead;
     //frequency = map(tempRead, sensorMin, sensorMax, freqRangeMin, freqRangeMax); //map the calibrated values (by default 0-1023) to the frequency range we want
     int cvRead = map(tempRead, sensorMin, sensorMax, 0, 1023);
-    float semiTones = ((freqRangeMax / freqRangeMin) / 2.0) * 12.0;
+    //int semiTones = ((freqRangeMax / freqRangeMin) / 2.0) * 12.0;
+    int semiTones = 24;
     float cvIn = cvRead * (semiTones / 1023.0);
     float freqExp = cvIn / 12.0;
     //float halfStep = 1.0595;

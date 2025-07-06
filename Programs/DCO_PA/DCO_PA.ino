@@ -148,9 +148,12 @@ void setup() {
 	TCCR1  = (1 << CS10);                  // no prescale
 
 	//Timer Interrupt Generation -timer 0
-	TCCR0A = (1 << WGM01) | (1 << WGM00); // fast PWM
+	TCCR0A = (1 << WGM01); 				// Clear timer on compare match A
 	TCCR0B = (1 << CS00);                // no prescale
-	TIMSK = (1 << TOIE0);                // Enable Interrupt on overflow
+	OCR0A = 200;			// 200 = 8000000 / 40000 => sample rate = 40kHz
+	TIMSK = (1 << OCIE0A);                // Enable Interrupt on compare match A
+
+	// WGM0[2:0] = 2
 
 	//Pin Change Interrupt
 	GIMSK |= (1 << PCIE);    // Enable 
@@ -174,7 +177,7 @@ ISR(PCINT0_vect) {                       //PIN Interruption - has priority over 
 	inputButtonValue = PINB & 0x02;        //Reads button (digital input 1, the second bit in register PINB. We check the value with & binary 10, so 0x02)
 }
 
-ISR(TIMER0_OVF_vect) {                   //Timer 0 interruption - changes the width of timer 1's pulse to generate waves
+ISR(TIMER0_CMP_vect) {                   //Timer 0 interruption - changes the width of timer 1's pulse to generate waves
 	static byte sample;
 	static unsigned int phase;
 	OCR1B = sample;

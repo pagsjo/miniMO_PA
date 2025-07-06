@@ -322,6 +322,13 @@ void setFrequency(int pin) {
 		byte freqRead = tempRead >> 2;
 		potPosFreqRef = freqRead;
 		//frequency = map(tempRead, sensorMin, sensorMax, freqRangeMin, freqRangeMax); //map the calibrated values (by default 0-1023) to the frequency range we want
+
+		
+		int sensorRange = sensorMax - sensorMin;
+		float cvLevel = (tempRead - sensorMin) / sensorRange;
+		frequency = freqRangeMin * pow(2.0, 2.0 * cvLevel);
+
+/*
 		int cvRead = map(tempRead, sensorMin, sensorMax, 0, 1023);
 		//int semiTones = ((freqRangeMax / freqRangeMin) / 2.0) * 12.0;
 		int semiTones = 24;
@@ -330,6 +337,7 @@ void setFrequency(int pin) {
 		//float halfStep = 1.0595;
 		//frequency = freqRangeMin * pow(halfStep, cvIn); //x=a*1.0595^n (less precise)
 		frequency = freqRangeMin * pow(2.0, freqExp); //x=a*2^(n/12) (more precise)
+*/
 	}
 }
 

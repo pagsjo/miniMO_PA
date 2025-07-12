@@ -324,7 +324,7 @@ void setFrequency(int pin) {
 		//frequency = map(tempRead, sensorMin, sensorMax, freqRangeMin, freqRangeMax); //map the calibrated values (by default 0-1023) to the frequency range we want
 
 		
-		int sensorRange = sensorMax - sensorMin;
+		float sensorRange = sensorMax - sensorMin;
 		float cvLevel = (tempRead - sensorMin) / sensorRange;
 		frequency = freqRangeMin * pow(2.0, 2.0 * cvLevel);
 

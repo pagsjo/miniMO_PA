@@ -39,3 +39,14 @@ Edited to be more playable from external CV.
 Calibrate with a two-octave span using V/oct.
 
 Requires _**disabling**_ **millis()/micros()**.
+
+## New modules:
+### ClockDivider
+Takes an analog clock input and divides it by 2, 4, 8 or 16 (controllable by the knob).
+
+Outputs the divided clock on I/O 1 & 2 (Pin 4).
+
+#### I/O:
+* 1 & 2: Output
+* 3: Division (also knob)
+* 4: Input

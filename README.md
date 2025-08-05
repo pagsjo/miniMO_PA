@@ -46,6 +46,9 @@ Takes an analog clock input and divides it by 2, 4, 8 or 16 (controllable by the
 
 Outputs the divided clock on I/O 1 & 2 (Pin 4).
 
+... at least that's what it's supposed to do.
+It does not work currently.
+
 #### I/O:
 * 1 & 2: Output
 * 3: Division (also knob)

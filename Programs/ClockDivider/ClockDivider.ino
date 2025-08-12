@@ -1,14 +1,12 @@
 #include <avr/io.h>
-#include <avr/eeprom.h>
-#include <util/delay.h>
 
 // pins
-const int BTN_PIN = 1;
-const int CLK_IN = 2;
-const int CTRL_IN = 3;
+#define BTN_PIN 1
+#define CLK_IN 2
+#define CTRL_IN 3
 
-const int LED_PIN = 0;
-const int CLK_OUT = 4;
+#define LED_PIN 0
+#define CLK_OUT 4
 
 // variables
 int buttonState = LOW;
@@ -32,12 +30,12 @@ void setup()
 	checkVoltage();
 	ADMUX = 0; // Reset multiplexer
 
-	cli();
+	cli(); // Disable interrupts
 
 	GIMSK |= (1 << PCIE);					// Pin Change Interrupt Enable
 	PCMSK |= (1 << PCINT1) | (1 << PCINT2); // Pin 1 & 2
 
-	sei();
+	sei(); // Enable interrupts
 
 	digitalWrite(LED_PIN, HIGH);
 }
@@ -51,15 +49,15 @@ ISR(PCINT0_vect) // Pin Interrupt
 void loop()
 {
 	int ctrlRead = analogRead(CTRL_IN);
-	int divtableOffset = map(ctrlRead, 0, 1023, 0, 4);
-	const int divtable[5] = {
+	int divTableOffset = map(ctrlRead, 0, 1023, 0, 4);
+	const int divTable[5] = {
 		0, // OFF
 		1, // Divide by 2
 		2, // Divide by 4
 		4, // Divide by 8
 		8, // Divide by 16
 	};
-	int divValue = pgm_read_byte_near(divtable + divtableOffset);
+	int divValue = pgm_read_byte_near(divTable + divTableOffset);
 
 	if (divValue != 0)
 	{
